@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "EmmaFab Cosmetics - Natural Beauty Products",
   description:
     "Discover premium natural cosmetics including black soap, shea butter, stretch mark cream, moringa slim tea, and hair care products.",
-  generator: "v0.app",
+  
 }
 
 export default function RootLayout({
