@@ -9,7 +9,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Image
-              src="/images/emmafab-logo.png"
+              src="/images/emmafab-logo-hd.png"
               alt="EmmaFab Cosmetics"
               width={150}
               height={75}
