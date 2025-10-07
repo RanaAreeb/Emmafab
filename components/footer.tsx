@@ -114,7 +114,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-background/60 text-sm mb-4 md:mb-0">© 2024 EmmaFab Cosmetics. All rights reserved.</p>
+            <p className="text-background/60 text-sm mb-4 md:mb-0">© 2025 EmmaFab Cosmetics. All rights reserved.</p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-background/60 hover:text-background transition-colors">
                 Privacy Policy
