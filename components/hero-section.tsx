@@ -76,7 +76,7 @@ export function HeroSection() {
             <div className="relative w-full max-w-lg mx-auto">
               <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-8 backdrop-blur-sm border border-primary/20">
                 <Image
-                  src="/images/emmafab-logo-hd.png"
+                  src="/images/logo.jpg"
                   alt="EmmaFab Cosmetics"
                   width={300}
                   height={200}

@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
+import nodemailer from "nodemailer"
 
 interface OrderItem {
   product: {
@@ -32,8 +33,12 @@ export async function POST(request: NextRequest) {
   try {
     const orderData: OrderData = await request.json()
 
-    // Create email content
-    const emailContent = generateOrderEmailHTML(orderData)
+    // Create email contents
+    const customerEmailHtml = generateOrderEmailHTML(orderData)
+    const adminEmailHtml = generateAdminOrderEmailHTML(orderData)
+
+    // Determine recipient for store notifications (owner/admin)
+    const recipient = process.env.ORDER_NOTIFICATION_EMAIL || "emmafabcosmetics@gmail.com"
 
     // In a real application, you would use a service like:
     // - Resend (resend.com)
@@ -41,23 +46,66 @@ export async function POST(request: NextRequest) {
     // - Nodemailer with SMTP
     // - AWS SES
 
-    // For demo purposes, we'll simulate sending the email
-    console.log("[v0] Order email would be sent to:", orderData.customer.email)
-    console.log("[v0] Email content:", emailContent)
+    // Try to send the email via SMTP (Nodemailer). If SMTP is not configured, fallback to console.
+    const smtpUser = process.env.SMTP_USER
+    const smtpPass = process.env.SMTP_PASS
+    const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com"
+    const smtpPort = Number(process.env.SMTP_PORT || 465)
+    const smtpSecure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : true
+    const mailFrom = process.env.MAIL_FROM || smtpUser || "no-reply@emmafab.com"
 
-    // Simulate email sending delay
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    if (smtpUser && smtpPass) {
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port: smtpPort,
+        secure: smtpSecure,
+        auth: { user: smtpUser, pass: smtpPass },
+      })
+
+      // Send confirmation to customer
+      await transporter.sendMail({
+        from: mailFrom,
+        to: orderData.customer.email,
+        subject: `Order Confirmation - ${orderData.orderNumber}`,
+        html: customerEmailHtml,
+      })
+      // Send notification to store/admin
+      await transporter.sendMail({
+        from: mailFrom,
+        to: recipient,
+        subject: `New Order Received - ${orderData.orderNumber}`,
+        html: adminEmailHtml,
+      })
+      console.log("[v0] Sent customer confirmation to:", orderData.customer.email)
+      console.log("[v0] Sent admin notification to:", recipient)
+    } else {
+      console.warn("[v0] SMTP not configured. Logging email instead of sending. Set SMTP_USER/SMTP_PASS.")
+      console.log("[v0] Customer confirmation would be sent to:", orderData.customer.email)
+      console.log("[v0] Customer email content:", customerEmailHtml)
+      console.log("[v0] Admin notification would be sent to:", recipient)
+      console.log("[v0] Admin email content:", adminEmailHtml)
+      // Simulate email sending delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+    }
 
     // Here's how you would integrate with Resend (example):
     /*
     import { Resend } from 'resend'
     const resend = new Resend(process.env.RESEND_API_KEY)
     
+    // Example using Resend to send both emails
     await resend.emails.send({
       from: 'orders@emmafab.com',
       to: orderData.customer.email,
       subject: `Order Confirmation - ${orderData.orderNumber}`,
-      html: emailContent,
+      html: customerEmailHtml,
+    })
+
+    await resend.emails.send({
+      from: 'orders@emmafab.com',
+      to: recipient,
+      subject: `New Order Received - ${orderData.orderNumber}`,
+      html: adminEmailHtml,
     })
     */
 
@@ -186,5 +234,36 @@ function generateOrderEmailHTML(orderData: OrderData): string {
       
     </body>
     </html>
+  `
+}
+
+function generateAdminOrderEmailHTML(orderData: OrderData): string {
+  const { customer, items, total, orderNumber, orderDate } = orderData
+  const itemsLines = items
+    .map(
+      (item) => `${item.quantity} × ${item.product.name} — $${(item.product.price * item.quantity).toFixed(2)}`,
+    )
+    .join("\n")
+
+  return `
+    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;max-width:640px;margin:0 auto;padding:16px;">
+      <h2>New Order Received</h2>
+      <p><strong>Order:</strong> ${orderNumber} • ${new Date(orderDate).toLocaleString()}</p>
+      <h3>Customer</h3>
+      <p>
+        ${customer.firstName} ${customer.lastName}<br/>
+        ${customer.email}<br/>
+        ${customer.phone || ""}
+      </p>
+      <h3>Shipping Address</h3>
+      <p>
+        ${customer.address}<br/>
+        ${customer.city}, ${customer.state} ${customer.zipCode}<br/>
+        ${customer.country}
+      </p>
+      <h3>Items</h3>
+      <pre style="background:#f6f7f9;padding:12px;border-radius:8px;white-space:pre-wrap;">${itemsLines}</pre>
+      <p style="font-size:18px"><strong>Total:</strong> $${total.toFixed(2)}</p>
+    </div>
   `
 }

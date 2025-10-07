@@ -32,18 +32,12 @@ interface OrderData {
   zipCode: string
   country: string
 
-  // Payment Info
-  cardNumber: string
-  expiryDate: string
-  cvv: string
-  cardName: string
-
   // Order Notes
   notes: string
 }
 
 export default function CheckoutPage() {
-  const { state, dispatch } = useCart()
+  const { state, actions } = useCart()
   const router = useRouter()
   const [isProcessing, setIsProcessing] = useState(false)
   const [orderData, setOrderData] = useState<OrderData>({
@@ -56,10 +50,6 @@ export default function CheckoutPage() {
     state: "",
     zipCode: "",
     country: "United States",
-    cardNumber: "",
-    expiryDate: "",
-    cvv: "",
-    cardName: "",
     notes: "",
   })
 
@@ -92,7 +82,10 @@ export default function CheckoutPage() {
       await new Promise((resolve) => setTimeout(resolve, 2000))
 
       const orderDetails = {
-        items: state.items,
+        items: state.items.map((item) => ({
+          product: { ...item.product, id: String(item.product.id) },
+          quantity: item.quantity,
+        })),
         total: state.total,
         customer: orderData,
         orderNumber: `EF${Date.now()}`,
@@ -110,7 +103,7 @@ export default function CheckoutPage() {
       }
 
       // Clear cart after successful order
-      dispatch({ type: "CLEAR_CART" })
+      actions.clearCart()
 
       // Redirect to success page (you could create this)
       router.push("/order-success")
@@ -269,61 +262,7 @@ export default function CheckoutPage() {
                 </CardContent>
               </Card>
 
-              {/* Payment Information */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
-                      3
-                    </div>
-                    Payment Information
-                    <Lock className="h-4 w-4 text-muted-foreground" />
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div>
-                    <Label htmlFor="cardName">Name on Card *</Label>
-                    <Input
-                      id="cardName"
-                      required
-                      value={orderData.cardName}
-                      onChange={(e) => handleInputChange("cardName", e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="cardNumber">Card Number *</Label>
-                    <Input
-                      id="cardNumber"
-                      placeholder="1234 5678 9012 3456"
-                      required
-                      value={orderData.cardNumber}
-                      onChange={(e) => handleInputChange("cardNumber", e.target.value)}
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="expiryDate">Expiry Date *</Label>
-                      <Input
-                        id="expiryDate"
-                        placeholder="MM/YY"
-                        required
-                        value={orderData.expiryDate}
-                        onChange={(e) => handleInputChange("expiryDate", e.target.value)}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="cvv">CVV *</Label>
-                      <Input
-                        id="cvv"
-                        placeholder="123"
-                        required
-                        value={orderData.cvv}
-                        onChange={(e) => handleInputChange("cvv", e.target.value)}
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              {/* Payment Information removed */}
 
               {/* Order Notes */}
               <Card>
