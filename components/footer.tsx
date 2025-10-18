@@ -56,68 +56,71 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Products */}
-          <div>
-            <h3 className="font-serif text-lg font-medium mb-6">Products</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/products/black-soap" className="text-background/80 hover:text-background transition-colors">
-                  Black Soap
-                </Link>
-              </li>
-              <li>
-                <Link href="/products/shea-butter" className="text-background/80 hover:text-background transition-colors">
-                  Shea Butter
-                </Link>
-              </li>
-              <li>
-                <Link href="/products/stretch-marks-cream" className="text-background/80 hover:text-background transition-colors">
-                  Stretch Marks Cream
-                </Link>
-              </li>
-              <li>
-                <Link href="/products/moringa-slim-tea" className="text-background/80 hover:text-background transition-colors">
-                  Moringa Slim Tea
-                </Link>
-              </li>
-              <li>
-                <Link href="/products/natural-hair-cream" className="text-background/80 hover:text-background transition-colors">
-                  Hair Cream
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Products and Company - Side by side on mobile */}
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-1 lg:grid-cols-1">
+            {/* Products */}
+            <div>
+              <h3 className="font-serif text-lg font-medium mb-6">Products</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/products/black-soap" className="text-background/80 hover:text-background transition-colors">
+                    Black Soap
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/shea-butter" className="text-background/80 hover:text-background transition-colors">
+                    Shea Butter
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/stretch-marks-cream" className="text-background/80 hover:text-background transition-colors">
+                    Stretch Marks Cream
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/moringa-slim-tea" className="text-background/80 hover:text-background transition-colors">
+                    Moringa Slim Tea
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/natural-hair-cream" className="text-background/80 hover:text-background transition-colors">
+                    Hair Cream
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Company */}
-          <div>
-            <h3 className="font-serif text-lg font-medium mb-6">Company</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/about" className="text-background/80 hover:text-background transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/our-story" className="text-background/80 hover:text-background transition-colors">
-                  Our Story
-                </Link>
-              </li>
-              <li>
-                <Link href="/ingredients" className="text-background/80 hover:text-background transition-colors">
-                  Ingredients
-                </Link>
-              </li>
-              <li>
-                <Link href="/sustainability" className="text-background/80 hover:text-background transition-colors">
-                  Sustainability
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-background/80 hover:text-background transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
+            {/* Company */}
+            <div>
+              <h3 className="font-serif text-lg font-medium mb-6">Company</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/about" className="text-background/80 hover:text-background transition-colors">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/our-story" className="text-background/80 hover:text-background transition-colors">
+                    Our Story
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ingredients" className="text-background/80 hover:text-background transition-colors">
+                    Ingredients
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sustainability" className="text-background/80 hover:text-background transition-colors">
+                    Sustainability
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-background/80 hover:text-background transition-colors">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
