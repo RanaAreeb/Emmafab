@@ -47,7 +47,7 @@ export default function AboutPage() {
               </div>
               <div className="relative">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/logo.webp"
                   alt="EmmaFab Cosmetics Logo"
                   width={500}
                   height={400}

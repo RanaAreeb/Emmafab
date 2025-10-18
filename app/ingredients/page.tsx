@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const ingredients = [
   {
     name: "Shea Butter",
-    image: "/images/black-soap-ad.jpg",
+    image: "/images/black-soap-ad.webp",
     origin: "West Africa",
     benefits: ["Deep Moisturizing", "Anti-inflammatory", "Vitamin A & E", "Natural SPF"],
     description: "Pure, unrefined shea butter from the karité tree, rich in fatty acids and vitamins that deeply nourish and protect the skin.",
@@ -22,7 +22,7 @@ const ingredients = [
   },
   {
     name: "African Black Soap",
-    image: "/images/black-soap-ad.jpg",
+    image: "/images/black-soap-ad.webp",
     origin: "West Africa",
     benefits: ["Deep Cleansing", "Exfoliating", "Antimicrobial", "Balances pH"],
     description: "Traditional black soap made from plantain skins, palm oil, and other natural ingredients, known for its gentle yet effective cleansing properties.",
@@ -30,7 +30,7 @@ const ingredients = [
   },
   {
     name: "Moringa",
-    image: "/images/moringa-slim-tea.jpg",
+    image: "/images/moringa-slim-tea.webp",
     origin: "Tropical Regions",
     benefits: ["Antioxidant Rich", "Anti-aging", "Nutrient Dense", "Energy Boosting"],
     description: "The 'miracle tree' leaves are packed with vitamins, minerals, and antioxidants that provide incredible health and beauty benefits.",
@@ -38,7 +38,7 @@ const ingredients = [
   },
   {
     name: "Cocoa Butter",
-    image: "/images/stretch-marks-cream.jpg",
+    image: "/images/stretch-marks-cream.webp",
     origin: "West Africa",
     benefits: ["Skin Repair", "Stretch Mark Prevention", "Antioxidants", "Softening"],
     description: "Pure cocoa butter extracted from cocoa beans, rich in antioxidants and natural fats that help repair and protect the skin.",
@@ -46,7 +46,7 @@ const ingredients = [
   },
   {
     name: "Argan Oil",
-    image: "/images/hair-cream.jpg",
+    image: "/images/hair-cream.webp",
     origin: "Morocco",
     benefits: ["Hair Nourishment", "Skin Hydration", "Vitamin E", "Anti-aging"],
     description: "Cold-pressed argan oil from the argan tree, known as 'liquid gold' for its incredible moisturizing and anti-aging properties.",
@@ -54,7 +54,7 @@ const ingredients = [
   },
   {
     name: "Coconut Oil",
-    image: "/images/black-soap-ad.jpg",
+    image: "/images/black-soap-ad.webp",
     origin: "Tropical Regions",
     benefits: ["Antimicrobial", "Moisturizing", "Lauric Acid", "Skin Protection"],
     description: "Virgin coconut oil with high lauric acid content, providing natural antimicrobial and moisturizing benefits.",
