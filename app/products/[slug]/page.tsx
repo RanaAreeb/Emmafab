@@ -5,7 +5,7 @@ import { getProductBySlug, products } from "@/lib/products"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Star, ShoppingCart, Heart, Share2, Truck, Shield, RotateCcw, Plus, Minus } from "lucide-react"
+import { Star, ShoppingCart, Share2, Truck, Shield, RotateCcw, Plus, Minus } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useCart } from "@/lib/cart-context"
@@ -36,6 +36,31 @@ export default function ProductPage({ params }: ProductPageProps) {
     setTimeout(() => {
       setIsAdding(false)
     }, 500)
+  }
+
+  const handleShare = async () => {
+    const shareData = {
+      title: product.name,
+      text: product.description,
+      url: window.location.href,
+    }
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        console.log('Error sharing:', err)
+      }
+    } else {
+      // Fallback: copy to clipboard
+      try {
+        await navigator.clipboard.writeText(window.location.href)
+        // You could add a toast notification here
+        alert('Product link copied to clipboard!')
+      } catch (err) {
+        console.log('Error copying to clipboard:', err)
+      }
+    }
   }
 
   return (
@@ -186,10 +211,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                     </AnimatePresence>
                   </Button>
                 </motion.div>
-                <Button size="lg" variant="outline">
-                  <Heart className="w-5 h-5" />
-                </Button>
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" onClick={handleShare}>
                   <Share2 className="w-5 h-5" />
                 </Button>
               </div>

@@ -20,9 +20,9 @@ export function HeroSection() {
               Premium Natural Cosmetics
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-balance leading-tight mb-4 md:mb-6">
-              Embrace Your
-              <span className="block text-primary font-medium relative">
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-balance leading-tight mb-4 md:mb-6">
+              <span className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Embrace Your</span>
+              <span className="block text-primary font-medium relative text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-8xl">
                 Natural Beauty
                 <svg className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-2 md:h-3 text-primary/30" viewBox="0 0 300 12" fill="none">
                   <path
@@ -35,7 +35,7 @@ export function HeroSection() {
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-6 md:mb-8 text-pretty leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-6 md:mb-8 text-pretty leading-relaxed">
               Transform your skincare routine with EmmaFab's premium collection of natural cosmetics, crafted with the
               finest ingredients for radiant, healthy skin.
             </p>
