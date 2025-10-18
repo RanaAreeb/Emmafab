@@ -83,7 +83,7 @@ export function HeroSection() {
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
               <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border border-primary/20">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/logo.webp"
                   alt="EmmaFab Cosmetics"
                   width={300}
                   height={200}
@@ -92,14 +92,14 @@ export function HeroSection() {
               </div>
 
               <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-card border border-border rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg animate-float">
-                <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-primary/20 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-primary/20 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto">
                   <Leaf className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-primary" />
                 </div>
                 <p className="text-xs font-medium mt-1 sm:mt-2 text-center">Natural</p>
               </div>
 
               <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-card border border-border rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg animate-float delay-500">
-                <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-secondary/20 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-secondary/20 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto">
                   <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-secondary" />
                 </div>
                 <p className="text-xs font-medium mt-1 sm:mt-2 text-center">Premium</p>

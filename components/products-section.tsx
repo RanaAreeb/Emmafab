@@ -10,7 +10,7 @@ const products = [
     slug: "black-soap",
     description:
       "Deep cleansing, exfoliating, and moisturizing properties. Helps balance oil production and soothe irritation.",
-    image: "/images/BS.png",
+    image: "/images/BS.webp",
     benefits: ["Deep Cleanse", "Exfoliate", "Moisturize", "Balance Oil"],
   },
  
@@ -20,7 +20,7 @@ const products = [
     name: "Natural Hair Cream",
     slug: "natural-hair-cream",
     description: "Provides light to medium hold while keeping hair soft and touchable with natural movement.",
-    image: "/images/HC.png",
+    image: "/images/HC.webp",
     benefits: ["Light Hold", "Soft Touch", "Natural Movement", "Nourishing"],
   },
   {
@@ -28,7 +28,7 @@ const products = [
     name: "Kids Hair Cream",
     slug: "kids-hair-cream",
     description: "Specially formulated for children's delicate hair, providing gentle nourishment and natural styling.",
-    image: "/images/KH.png",
+    image: "/images/KH.webp",
     benefits: ["Child-Safe", "Natural Ingredients", "Easy Styling"],
   },
 ]

@@ -10,7 +10,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Image
-              src="/images/emmafab-logo-hd.png"
+              src="/images/emmafab-logo-hd.webp"
               alt="EmmaFab Cosmetics"
               width={150}
               height={75}
@@ -56,8 +56,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Products and Company - Side by side on mobile */}
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-1 lg:grid-cols-1">
+          {/* Products and Company - Side by side on all screens */}
+          <div className="grid grid-cols-2 gap-8">
             {/* Products */}
             <div>
               <h3 className="font-serif text-lg font-medium mb-6">Products</h3>

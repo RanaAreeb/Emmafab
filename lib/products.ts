@@ -25,8 +25,8 @@ export const products: Product[] = [
     description: "Deep cleansing with natural ingredients and gentle cleansing properties",
     longDescription:
       "EmmaFab black soap offers numerous benefits for the skin due to its natural ingredients and gentle cleansing properties. It's known for its ability to deep cleanse, exfoliate, and moisturize, while also helping to balance oil production and soothe irritation. Additionally, it may help reduce the appearance of dark spots, acne scars, and fine lines.",
-    image: "/images/BS.png",
-    images: ["/images/BS.png"],
+    image: "/images/BS.webp",
+    images: ["/images/BS.webp"],
     rating: 4.9,
     price: 24.99,
     originalPrice: 29.99,
@@ -56,8 +56,8 @@ export const products: Product[] = [
     description: "Premium moisturizing for all skin types with high concentrations of fatty acids",
     longDescription:
       "EmmaFab Original Shea butter has high concentrations of fatty acids and vitamins for softening skin. EmmaFab Shea butter also has anti-inflammatory and healing abilities, which makes the body look fresh and clean always. Its moisturizing effects treat minor skin injuries like cuts, burns, and insect bites, and may help to reduce scarring.",
-    image: "/images/SB.png", // Using available image
-    images: ["/images/SB.png"],
+    image: "/images/SB.webp", // Using available image
+    images: ["/images/SB.webp"],
     rating: 4.8,
     price: 19.99,
     originalPrice: 24.99,
@@ -148,8 +148,8 @@ export const products: Product[] = [
     description: "Light to medium hold styling cream that keeps hair soft and touchable",
     longDescription:
       "EmmaFab Natural hair Cream provides light to medium hold for your hair. Your hair stays soft and touchable while keeping some movement going. Perfect for natural styling without the stiffness of traditional gels.",
-    image: "/images/HC.png",
-    images: ["/images/HC.png"],
+    image: "/images/HC.webp",
+    images: ["/images/HC.webp"],
     rating: 4.5,
     price: 22.99,
     category: "Hair Care",
@@ -178,8 +178,8 @@ export const products: Product[] = [
     description: "Specially formulated for children's delicate hair, providing gentle nourishment and natural styling.",
     longDescription:
       "EmmaFab Kids Hair Cream is specially designed for children's delicate hair. Made with gentle, natural ingredients, it provides nourishment while keeping hair soft and manageable. Perfect for daily styling and care for your little ones.",
-    image: "/images/KH.png",
-    images: ["/images/KH.png"],
+    image: "/images/KH.webp",
+    images: ["/images/KH.webp"],
     rating: 4.8,
     price: 18.99,
     category: "Hair Care",
