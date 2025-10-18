@@ -11,7 +11,6 @@ import Link from "next/link"
 import { useCart } from "@/lib/cart-context"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Header } from "@/components/header"
 
 interface ProductPageProps {
   params: {
@@ -40,8 +39,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
+    <div className="min-h-screen bg-background pt-20">
 
       {/* Breadcrumb */}
       <div className="border-b">
@@ -66,13 +64,16 @@ export default function ProductPage({ params }: ProductPageProps) {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Product Images */}
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
-              <div className="relative overflow-hidden rounded-lg bg-muted">
+              <div className="relative overflow-hidden rounded-lg bg-muted aspect-[3/2]">
                 <Image
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   width={600}
-                  height={600}
-                  className="w-full h-96 lg:h-[500px] object-cover"
+                  height={450}
+                  className="w-full h-full object-cover"
+                  priority
+                  quality={95}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 {!product.inStock && (
                   <div className="absolute inset-0 bg-black/50 flex items-center justify-center">

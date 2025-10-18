@@ -29,7 +29,7 @@ export function FeaturedProducts() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProducts.map((product, index) => (
             <motion.div
               key={product.id}
@@ -37,63 +37,56 @@ export function FeaturedProducts() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
-                <CardContent className="p-0">
-                  <Link href={`/products/${product.slug}`}>
-                    <div className="relative overflow-hidden rounded-t-lg">
-                      <Image
-                        src={product.image || "/placeholder.svg"}
-                        alt={product.name}
-                        width={400}
-                        height={300}
-                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                        New
-                      </div>
+              <Card className="group overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="aspect-[3/2] overflow-hidden relative">
+                  <Image
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.name}
+                    width={600}
+                    height={450}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    quality={95}
+                  />
+                  <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                    Featured
+                  </div>
+                </div>
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                      ))}
                     </div>
-                  </Link>
+                    <span className="text-sm text-muted-foreground">({product.rating})</span>
+                  </div>
 
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                        ))}
-                      </div>
-                      <span className="text-sm text-muted-foreground">({product.rating})</span>
+                  <h3 className="font-serif text-xl font-medium mb-3 text-primary">{product.name}</h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed text-sm">{product.description}</p>
+
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="text-2xl font-bold text-primary">${product.price.toFixed(2)}</span>
+                      {product.originalPrice && (
+                        <span className="text-sm text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>
+                      )}
                     </div>
+                  </div>
 
-                    <Link href={`/products/${product.slug}`}>
-                      <h3 className="font-serif text-xl font-medium mb-2 hover:text-primary transition-colors">
-                        {product.name}
-                      </h3>
-                    </Link>
-                    <p className="text-muted-foreground mb-4">{product.description}</p>
-
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-2xl font-bold text-primary">${product.price.toFixed(2)}</span>
-                        {product.originalPrice && (
-                          <span className="text-sm text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>
-                        )}
-                      </div>
-                      <div className="flex gap-2">
-                        <Button size="sm" variant="outline" asChild>
-                          <Link href={`/products/${product.slug}`}>Details</Link>
-                        </Button>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                          <Button
-                            size="sm"
-                            className="bg-primary hover:bg-primary/90"
-                            onClick={() => handleAddToCart(product)}
-                            disabled={!product.inStock}
-                          >
-                            <ShoppingCart className="w-4 h-4" />
-                          </Button>
-                        </motion.div>
-                      </div>
-                    </div>
+                  <div className="flex gap-2">
+                    <Button asChild className="flex-1 bg-primary hover:bg-primary/90">
+                      <Link href={`/products/${product.slug}`}>Learn More</Link>
+                    </Button>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button
+                        size="sm"
+                        className="bg-primary hover:bg-primary/90"
+                        onClick={() => handleAddToCart(product)}
+                        disabled={!product.inStock}
+                      >
+                        <ShoppingCart className="w-4 h-4" />
+                      </Button>
+                    </motion.div>
                   </div>
                 </CardContent>
               </Card>

@@ -35,6 +35,7 @@ const CartContext = createContext<{
 } | null>(null)
 
 function cartReducer(state: CartState, action: CartAction): CartState {
+  console.log('cartReducer called with action:', action);
   switch (action.type) {
     case "ADD_ITEM": {
       const existingItem = state.items.find((item) => item.product.id === action.product.id)
@@ -56,7 +57,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     }
 
     case "REMOVE_ITEM": {
-      const newItems = state.items.filter((item) => item.product.id !== action.productId)
+      const newItems = state.items.filter((item) => item.product.id.toString() !== action.productId)
       const total = newItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
       const itemCount = newItems.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -66,7 +67,7 @@ function cartReducer(state: CartState, action: CartAction): CartState {
     case "UPDATE_QUANTITY": {
       const newItems = state.items
         .map((item) =>
-          item.product.id === action.productId ? { ...item, quantity: Math.max(0, action.quantity) } : item,
+          item.product.id.toString() === action.productId ? { ...item, quantity: Math.max(0, action.quantity) } : item,
         )
         .filter((item) => item.quantity > 0)
 
@@ -100,15 +101,19 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const actions: CartActions = {
     addToCart: (product: Product, quantity = 1) => {
+      console.log('addToCart called:', product.id, quantity);
       dispatch({ type: "ADD_ITEM", product, quantity })
     },
     removeFromCart: (productId: string) => {
+      console.log('removeFromCart called:', productId);
       dispatch({ type: "REMOVE_ITEM", productId })
     },
     updateQuantity: (productId: string, quantity: number) => {
+      console.log('updateQuantity called:', productId, quantity);
       dispatch({ type: "UPDATE_QUANTITY", productId, quantity })
     },
     clearCart: () => {
+      console.log('clearCart called');
       dispatch({ type: "CLEAR_CART" })
     },
   }

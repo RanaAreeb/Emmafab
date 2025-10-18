@@ -1,37 +1,35 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const products = [
   {
     id: 1,
     name: "Black Soap",
+    slug: "black-soap",
     description:
       "Deep cleansing, exfoliating, and moisturizing properties. Helps balance oil production and soothe irritation.",
-    image: "/images/black-soap-ad.jpg",
+    image: "/images/BS.png",
     benefits: ["Deep Cleanse", "Exfoliate", "Moisturize", "Balance Oil"],
   },
+ 
+  
   {
     id: 2,
-    name: "Stretch Marks Cream",
-    description: "Softens stretch marks by evening skin tone, boosting elasticity and hydrating for smoother skin.",
-    image: "/images/stretch-marks-cream.jpg",
-    benefits: ["Even Skin Tone", "Boost Elasticity", "Deep Hydration", "Smooth Texture"],
+    name: "Natural Hair Cream",
+    slug: "natural-hair-cream",
+    description: "Provides light to medium hold while keeping hair soft and touchable with natural movement.",
+    image: "/images/HC.png",
+    benefits: ["Light Hold", "Soft Touch", "Natural Movement", "Nourishing"],
   },
   {
     id: 3,
-    name: "Moringa Slim Tea",
-    description:
-      "Made from dried moringa leaves, packed with vitamins and antioxidants. Provides energy while being caffeine-free.",
-    image: "/images/moringa-slim-tea.jpg",
-    benefits: ["100% Natural", "Rich in Vitamins", "Antioxidants", "Caffeine Free"],
-  },
-  {
-    id: 4,
-    name: "Natural Hair Cream",
-    description: "Provides light to medium hold while keeping hair soft and touchable with natural movement.",
-    image: "/images/hair-cream.jpg",
-    benefits: ["Light Hold", "Soft Touch", "Natural Movement", "Nourishing"],
+    name: "Kids Hair Cream",
+    slug: "kids-hair-cream",
+    description: "Specially formulated for children's delicate hair, providing gentle nourishment and natural styling.",
+    image: "/images/KH.png",
+    benefits: ["Child-Safe", "Natural Ingredients", "Easy Styling"],
   },
 ]
 
@@ -62,6 +60,8 @@ export function ProductsSection() {
                   width={600}
                   height={450}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  quality={95}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <CardContent className="p-4">
@@ -74,7 +74,9 @@ export function ProductsSection() {
                     </span>
                   ))}
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90">Learn More</Button>
+                <Button asChild className="w-full bg-primary hover:bg-primary/90">
+                  <Link href={`/products/${product.slug}`}>Learn More</Link>
+                </Button>
               </CardContent>
             </Card>
           ))}

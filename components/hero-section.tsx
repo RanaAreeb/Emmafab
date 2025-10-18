@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles, Leaf } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function HeroSection() {
   return (
@@ -12,7 +13,7 @@ export function HeroSection() {
       <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-accent/20 rounded-full blur-2xl animate-bounce"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center pt-20">
           <div className="text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Sparkles className="w-4 h-4" />
@@ -41,18 +42,24 @@ export function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
               <Button
+                asChild
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                Explore Products
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/products">
+                  Explore Products
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
               <Button
+                asChild
                 variant="outline"
                 size="lg"
                 className="px-8 py-6 text-lg bg-transparent border-2 hover:bg-primary/5"
               >
-                Learn Our Story
+                <Link href="/our-story">
+                  Learn Our Story
+                </Link>
               </Button>
             </div>
 

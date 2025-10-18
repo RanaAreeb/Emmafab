@@ -5,19 +5,17 @@ import { Badge } from "@/components/ui/badge"
 import { Star, ShoppingCart } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { Header } from "@/components/header"
 
 export default function ProductsPage() {
   const categories = [...new Set(products.map((product) => product.category))]
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
 
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto pt-20">
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-balance mb-6">
               Our Natural Products
             </h1>
@@ -47,13 +45,15 @@ export default function ProductsPage() {
               >
                 <CardContent className="p-0">
                   <Link href={`/products/${product.slug}`}>
-                    <div className="relative overflow-hidden">
+                    <div className="aspect-[3/2] overflow-hidden">
                       <Image
                         src={product.image || "/placeholder.svg"}
                         alt={product.name}
-                        width={400}
-                        height={300}
-                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                        width={600}
+                  height={450}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        quality={95}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute top-4 left-4">
                         <Badge className="bg-primary text-primary-foreground">{product.category}</Badge>

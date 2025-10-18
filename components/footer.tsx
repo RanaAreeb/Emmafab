@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react"
 
 export function Footer() {
@@ -21,25 +22,33 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://facebook.com/emmafab"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-background/20 transition-colors"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/emmafab"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-background/20 transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://twitter.com/emmafab"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-background/20 transition-colors"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://youtube.com/emmafab"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-background/20 transition-colors"
               >
                 <Youtube className="h-5 w-5" />
@@ -52,29 +61,29 @@ export function Footer() {
             <h3 className="font-serif text-lg font-medium mb-6">Products</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/products/black-soap" className="text-background/80 hover:text-background transition-colors">
                   Black Soap
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/products/shea-butter" className="text-background/80 hover:text-background transition-colors">
                   Shea Butter
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/products/stretch-marks-cream" className="text-background/80 hover:text-background transition-colors">
                   Stretch Marks Cream
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/products/moringa-slim-tea" className="text-background/80 hover:text-background transition-colors">
                   Moringa Slim Tea
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/products/natural-hair-cream" className="text-background/80 hover:text-background transition-colors">
                   Hair Cream
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -84,29 +93,29 @@ export function Footer() {
             <h3 className="font-serif text-lg font-medium mb-6">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/about" className="text-background/80 hover:text-background transition-colors">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/our-story" className="text-background/80 hover:text-background transition-colors">
                   Our Story
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/ingredients" className="text-background/80 hover:text-background transition-colors">
                   Ingredients
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/sustainability" className="text-background/80 hover:text-background transition-colors">
                   Sustainability
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-background/80 hover:text-background transition-colors">
+                <Link href="/contact" className="text-background/80 hover:text-background transition-colors">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -116,15 +125,15 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-background/60 text-sm mb-4 md:mb-0">© 2025 EmmaFab Cosmetics. All rights reserved.</p>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              <Link href="/privacy-policy" className="text-background/60 hover:text-background transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              </Link>
+              <Link href="/terms-of-service" className="text-background/60 hover:text-background transition-colors">
                 Terms of Service
-              </a>
-              <a href="#" className="text-background/60 hover:text-background transition-colors">
+              </Link>
+              <Link href="/shipping-info" className="text-background/60 hover:text-background transition-colors">
                 Shipping Info
-              </a>
+              </Link>
             </div>
           </div>
         </div>

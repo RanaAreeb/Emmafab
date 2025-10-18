@@ -143,7 +143,12 @@ export function CartDrawer() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => actions.updateQuantity(item.product.id.toString(), item.quantity - 1)}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      console.log('Minus button clicked for product:', item.product.id);
+                                      actions.updateQuantity(item.product.id.toString(), item.quantity - 1);
+                                    }}
                                     className="h-7 w-7 p-0 hover:bg-gray-100 dark:hover:bg-gray-700"
                                   >
                                     <Minus className="h-3 w-3" />
@@ -154,7 +159,12 @@ export function CartDrawer() {
                                   <Button
                                     variant="outline"
                                     size="sm"
-                                    onClick={() => actions.updateQuantity(item.product.id.toString(), item.quantity + 1)}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      console.log('Plus button clicked for product:', item.product.id);
+                                      actions.updateQuantity(item.product.id.toString(), item.quantity + 1);
+                                    }}
                                     className="h-7 w-7 p-0 hover:bg-gray-100 dark:hover:bg-gray-700"
                                   >
                                     <Plus className="h-3 w-3" />
@@ -168,7 +178,12 @@ export function CartDrawer() {
                                   <Button
                                     variant="ghost"
                                     size="sm"
-                                    onClick={() => actions.removeFromCart(item.product.id.toString())}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      e.stopPropagation();
+                                      console.log('Delete button clicked for product:', item.product.id);
+                                      actions.removeFromCart(item.product.id.toString());
+                                    }}
                                     className="text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 p-1"
                                   >
                                     <Trash2 className="h-3 w-3" />
