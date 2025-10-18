@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, MapPin } from "lucide-react"
+import Link from "next/link"
 
 export function ContactSection() {
   return (
@@ -97,8 +98,10 @@ export function ContactSection() {
                 <p className="mb-6 opacity-90">
                   Join thousands of satisfied customers who have transformed their skincare routine with EmmaFab.
                 </p>
-                <Button variant="secondary" className="w-full">
-                  Shop Our Collection
+                <Button variant="secondary" className="w-full" asChild>
+                  <Link href="/products">
+                    Shop Our Collection
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
