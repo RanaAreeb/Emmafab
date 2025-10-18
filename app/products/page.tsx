@@ -1,3 +1,5 @@
+"use client"
+
 import { products } from "@/lib/products"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -5,9 +7,15 @@ import { Badge } from "@/components/ui/badge"
 import { Star, ShoppingCart } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useCart } from "@/lib/cart-context"
 
 export default function ProductsPage() {
   const categories = [...new Set(products.map((product) => product.category))]
+  const { actions } = useCart()
+
+  const handleAddToCart = (product: typeof products[0]) => {
+    actions.addToCart(product, 1)
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -104,7 +112,12 @@ export default function ProductsPage() {
                         <Button size="sm" variant="outline" asChild>
                           <Link href={`/products/${product.slug}`}>View Details</Link>
                         </Button>
-                        <Button size="sm" className="bg-primary hover:bg-primary/90" disabled={!product.inStock}>
+                        <Button 
+                          size="sm" 
+                          className="bg-primary hover:bg-primary/90" 
+                          disabled={!product.inStock}
+                          onClick={() => handleAddToCart(product)}
+                        >
                           <ShoppingCart className="w-4 h-4" />
                         </Button>
                       </div>

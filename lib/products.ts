@@ -115,7 +115,7 @@ export const products: Product[] = [
     id: 4,
     slug: "moringa-slim-tea",
     name: "EmmaFab Moringa Slim Tea",
-    description: "Natural wellness and energy boost from the miracle tree",
+    description: "Premium moringa leaf tea with powerful antioxidants, natural energy boost, and wellness benefits from the miracle tree",
     longDescription:
       "Moringa Slim tea comes from the dried leaves of the Moringa oleifera tree. This tree is often called the 'miracle tree' due to its rich nutritional profile. Moringa leaves are packed with vitamins, minerals and antioxidants. The tea provides energy but is also caffeine free, making it an option for any time of day.",
     image: "/images/moringa-slim-tea.jpg",
