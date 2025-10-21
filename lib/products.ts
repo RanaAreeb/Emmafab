@@ -28,7 +28,7 @@ export const products: Product[] = [
     image: "/images/BS.webp",
     images: ["/images/BS.webp"],
     rating: 4.9,
-    price: 24.99,
+    price: 19.99,
     originalPrice: 29.99,
     category: "Skincare",
     benefits: [
@@ -87,11 +87,11 @@ export const products: Product[] = [
     description: "Advanced formula to soften the appearance of stretch marks and boost skin elasticity",
     longDescription:
       "EFCE Stretch mark cream helps to soften the appearance of stretch marks by evening out skin tone, boosting skin elasticity and hydrating, nourishing and locking in moisture to the skin - so in a nutshell helping the stretch marks blend into the skin, while hydrating it and soothing any itching caused by stretching skin.",
-    image: "/images/stretch-marks-cream.jpg",
-    images: ["/images/stretch-marks-cream.jpg"],
+    image: "/images/SM.webp",
+    images: ["/images/SM.webp"],
     rating: 4.7,
-    price: 34.99,
-    originalPrice: 39.99,
+    price: 19.99,
+    originalPrice: 30.00,
     category: "Skincare",
     benefits: [
       "Softens stretch marks appearance",
@@ -118,10 +118,10 @@ export const products: Product[] = [
     description: "Premium moringa leaf tea with powerful antioxidants, natural energy boost, and wellness benefits from the miracle tree",
     longDescription:
       "Moringa Slim tea comes from the dried leaves of the Moringa oleifera tree. This tree is often called the 'miracle tree' due to its rich nutritional profile. Moringa leaves are packed with vitamins, minerals and antioxidants. The tea provides energy but is also caffeine free, making it an option for any time of day.",
-    image: "/images/moringa-slim-tea.jpg",
-    images: ["/images/moringa-slim-tea.jpg"],
+    image: "/images/MT.webp",
+    images: ["/images/MT.webp"],
     rating: 4.6,
-    price: 29.99,
+    price: 19.99,
     category: "Wellness",
     benefits: [
       "Rich in vitamins and minerals",
@@ -151,7 +151,7 @@ export const products: Product[] = [
     image: "/images/HC.webp",
     images: ["/images/HC.webp"],
     rating: 4.5,
-    price: 22.99,
+    price: 19.99,
     category: "Hair Care",
     benefits: [
       "Light to medium hold",
@@ -181,7 +181,7 @@ export const products: Product[] = [
     image: "/images/KH.webp",
     images: ["/images/KH.webp"],
     rating: 4.8,
-    price: 18.99,
+    price: 19.99,
     category: "Hair Care",
     benefits: [
       "Gentle formula for children",

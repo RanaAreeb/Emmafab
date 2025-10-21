@@ -201,10 +201,37 @@ function generateOrderEmailHTML(orderData: OrderData): string {
         </div>
       </div>
       
+      <!-- Payment Instructions -->
+      <div style="background: #f0f9ff; padding: 24px; border-radius: 12px; margin-bottom: 32px; border: 2px solid #0ea5e9;">
+        <h3 style="color: #0c4a6e; margin: 0 0 16px 0; font-size: 20px; text-align: center;">💳 Payment Required</h3>
+        <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e0f2fe;">
+          <p style="margin: 0 0 12px 0; font-size: 16px; color: #1f2937; text-align: center;">
+            <strong>Please send payment via Cash App to complete your order:</strong>
+          </p>
+          <div style="text-align: center; margin: 16px 0;">
+            <div style="display: inline-block; background: #00d4aa; color: white; padding: 12px 24px; border-radius: 8px; font-size: 18px; font-weight: bold; letter-spacing: 1px;">
+              $kro11
+            </div>
+          </div>
+          <p style="margin: 12px 0 0 0; font-size: 16px; color: #1f2937; text-align: center;">
+            <strong>Amount: $${total.toFixed(2)}</strong>
+          </p>
+        </div>
+        <div style="background: #fef3c7; padding: 16px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+          <p style="margin: 0 0 8px 0; font-weight: 600; color: #92400e;">📸 Important: Send Screenshot</p>
+          <p style="margin: 0; color: #92400e; font-size: 14px;">
+            After sending payment, please reply to this email with a screenshot of your Cash App payment confirmation. 
+            This helps us process your order faster!
+          </p>
+        </div>
+      </div>
+      
       <!-- What's Next -->
       <div style="background: #eff6ff; padding: 24px; border-radius: 12px; margin-bottom: 32px;">
         <h3 style="color: #1e40af; margin: 0 0 12px 0; font-size: 18px;">What's Next?</h3>
         <ul style="margin: 0; padding-left: 20px; color: #1f2937;">
+          <li style="margin-bottom: 8px;">Send payment via Cash App to <strong>$kro11</strong></li>
+          <li style="margin-bottom: 8px;">Reply to this email with your payment screenshot</li>
           <li style="margin-bottom: 8px;">We'll prepare your order within 1-2 business days</li>
           <li style="margin-bottom: 8px;">You'll receive a shipping confirmation with tracking info</li>
           <li style="margin-bottom: 8px;">Your order will arrive in 3-7 business days</li>
