@@ -230,7 +230,7 @@ export const products: Product[] = [
       "Can be used daily for hydration",
     ],
     inStock: true,
-    featured: true,
+    featured: false,
   },
 ]
 
