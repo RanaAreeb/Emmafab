@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       "Shop EmmaFab's natural beauty products: black soap, shea butter, stretch mark cream, moringa slim tea, and more.",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://emmafab.com",
     images: [
-      { url: "/images/emmafab-logo-hd.webp", width: 1200, height: 630, alt: "EmmaFab Cosmetics" },
+      { url: "/images/emmafab-logo-hd.png", width: 1200, height: 630, alt: "EmmaFab Cosmetics" },
     ],
   },
   twitter: {
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     title: "EmmaFab Cosmetics - Natural Beauty Products",
     description:
       "Shop EmmaFab's natural beauty products: black soap, shea butter, stretch mark cream, moringa slim tea, and more.",
-    images: ["/images/emmafab-logo-hd.webp"],
+    images: ["/images/emmafab-logo-hd.png"],
     creator: "@emmafab",
   },
 }

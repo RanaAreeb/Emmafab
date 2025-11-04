@@ -165,7 +165,7 @@ export default function SustainabilityPage() {
               </div>
               <div className="relative">
                 <Image
-                  src="/images/black-soap-ad.webp"
+                  src="/images/black-soap-ad.jpg"
                   alt="Ethical sourcing practices"
                   width={500}
                   height={400}
@@ -184,7 +184,7 @@ export default function SustainabilityPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="relative">
                 <Image
-                  src="/images/stretch-marks-cream.webp"
+                  src="/images/stretch-marks-cream.jpg"
                   alt="Sustainable packaging"
                   width={500}
                   height={400}

@@ -51,7 +51,7 @@ export default function OurStoryPage() {
                 </div>
                 <div className="md:w-1/2">
                   <Image
-                    src="/images/black-soap-ad.webp"
+                    src="/images/black-soap-ad.jpg"
                     alt="Traditional African beauty ingredients"
                     width={400}
                     height={300}
@@ -76,7 +76,7 @@ export default function OurStoryPage() {
                 </div>
                 <div className="md:w-1/2">
                   <Image
-                    src="/images/stretch-marks-cream.webp"
+                    src="/images/stretch-marks-cream.jpg"
                     alt="Emma learning traditional methods"
                     width={400}
                     height={300}
@@ -101,7 +101,7 @@ export default function OurStoryPage() {
                 </div>
                 <div className="md:w-1/2">
                   <Image
-                    src="/images/moringa-slim-tea.webp"
+                    src="/images/moringa-slim-tea.jpg"
                     alt="First EmmaFab products"
                     width={400}
                     height={300}
@@ -126,7 +126,7 @@ export default function OurStoryPage() {
                 </div>
                 <div className="md:w-1/2">
                   <Image
-                    src="/images/hair-cream.webp"
+                    src="/images/hair-cream.jpg"
                     alt="EmmaFab brand launch"
                     width={400}
                     height={300}
@@ -151,7 +151,7 @@ export default function OurStoryPage() {
                 </div>
                 <div className="md:w-1/2">
                   <Image
-                    src="/images/emmafab-logo-hd.webp"
+                    src="/images/emmafab-logo-hd.png"
                     alt="EmmaFab today"
                     width={400}
                     height={300}
