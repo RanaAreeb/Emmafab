@@ -314,7 +314,7 @@ export default function PrivacyPolicyPage() {
                 <Link href="/contact">Contact Us</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent">
-                <a href="mailto:privacy@emmafab.com">Email Privacy Team</a>
+                <a href="mailto:emmafabcosmetics@gmail.com">Email Privacy Team</a>
               </Button>
             </div>
           </div>

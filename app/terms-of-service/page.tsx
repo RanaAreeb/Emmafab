@@ -302,7 +302,7 @@ export default function TermsOfServicePage() {
                 <Link href="/contact">Contact Us</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent">
-                <a href="mailto:legal@emmafab.com">Email Legal Team</a>
+                <a href="mailto:emmafabcosmetics@gmail.com">Email Legal Team</a>
               </Button>
             </div>
           </div>

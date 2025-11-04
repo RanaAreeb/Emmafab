@@ -201,6 +201,37 @@ export const products: Product[] = [
     inStock: true,
     featured: false,
   },
+  {
+    id: 7,
+    slug: "aloe-vera-soothing-gel",
+    name: "EmmaFab Aloe Vera Soothing Gel",
+    description: "95% pure aloe vera gel that hydrates, soothes, and promotes healing for face and body",
+    longDescription:
+      "EmmaFab Aloe Vera Soothing Gel contains 95% pure aloe vera, providing intense hydration and soothing relief for irritated skin. This lightweight, fast-absorbing gel is perfect for sunburn relief, reducing redness, and deeply moisturizing the skin. Suitable for both face and body use.",
+    image: "/images/aloe.webp",
+    images: ["/images/aloe.webp"],
+    rating: 4.9,
+    price: 20.00,
+    category: "Skincare",
+    benefits: [
+      "Hydrates and soothes skin",
+      "Relieves sunburn and irritation",
+      "Reduces redness and promotes healing",
+      "Deeply moisturizes",
+      "Lightweight and fast-absorbing",
+      "Suitable for face and body",
+    ],
+    ingredients: ["95% Pure Aloe Vera", "Natural Glycerin", "Vitamin E", "Natural Preservatives"],
+    howToUse: [
+      "Apply to clean, dry skin",
+      "Gently massage until absorbed",
+      "Use after sun exposure for sunburn relief",
+      "Apply to irritated or red areas as needed",
+      "Can be used daily for hydration",
+    ],
+    inStock: true,
+    featured: true,
+  },
 ]
 
 export function getProductBySlug(slug: string): Product | undefined {

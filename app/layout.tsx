@@ -6,6 +6,7 @@ import { Suspense } from "react"
 import { CartProvider } from "@/lib/cart-context"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 import "./globals.css"
 
 const playfair = Playfair_Display({
@@ -89,12 +90,14 @@ export default function RootLayout({
         <meta name="msapplication-TileImage" content="/favicon.ico?v=1" />
       </head>
       <body className="font-sans antialiased">
-        <CartProvider>
-          <Header />
-          <Suspense fallback={null}>{children}</Suspense>
-          <Footer />
-        </CartProvider>
-        <Analytics />
+        <SmoothScrollProvider>
+          <CartProvider>
+            <Header />
+            <Suspense fallback={null}>{children}</Suspense>
+            <Footer />
+          </CartProvider>
+          <Analytics />
+        </SmoothScrollProvider>
       </body>
     </html>
   )

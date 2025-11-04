@@ -24,6 +24,7 @@ interface OrderData {
     state: string
     zipCode: string
     country: string
+    notes: string
   }
   orderNumber: string
   orderDate: string
@@ -245,7 +246,7 @@ function generateOrderEmailHTML(orderData: OrderData): string {
           Contact our customer service team if you have any questions about your order.
         </p>
         <p style="margin: 0; color: #059669; font-weight: 600;">
-          📧 support@emmafab.com • 📞 1-800-EMMAFAB
+          📧 emmafabcosmetics@gmail.com • 📞 1-800-EMMAFAB
         </p>
       </div>
       
@@ -291,6 +292,12 @@ function generateAdminOrderEmailHTML(orderData: OrderData): string {
       <h3>Items</h3>
       <pre style="background:#f6f7f9;padding:12px;border-radius:8px;white-space:pre-wrap;">${itemsLines}</pre>
       <p style="font-size:18px"><strong>Total:</strong> $${total.toFixed(2)}</p>
+      ${customer.notes ? `
+      <h3>Order Notes</h3>
+      <div style="background:#f6f7f9;padding:12px;border-radius:8px;border-left:4px solid #059669;">
+        <p style="margin:0;font-style:italic;">"${customer.notes}"</p>
+      </div>
+      ` : ''}
     </div>
   `
 }

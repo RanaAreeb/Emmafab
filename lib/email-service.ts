@@ -19,6 +19,7 @@ interface OrderEmailData {
     state: string
     zipCode: string
     country: string
+    notes: string
   }
   orderNumber: string
   orderDate: string

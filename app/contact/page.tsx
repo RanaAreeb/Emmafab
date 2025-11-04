@@ -87,8 +87,8 @@ export default function ContactPage() {
                         <div>
                           <h3 className="font-semibold text-foreground mb-2">Email Us</h3>
                           <p className="text-muted-foreground mb-2">We'll respond within 24 hours</p>
-                          <a href="mailto:hello@emmafab.com" className="text-primary hover:underline">
-                            hello@emmafab.com
+                          <a href="mailto:emmafabcosmetics@gmail.com" className="text-primary hover:underline">
+                            emmafabcosmetics@gmail.com
                           </a>
                         </div>
                       </div>
@@ -222,7 +222,7 @@ export default function ContactPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary">
-                <a href="mailto:hello@emmafab.com">Email Us</a>
+                <a href="mailto:emmafabcosmetics@gmail.com">Email Us</a>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent">
                 <a href="tel:+1234567890">Call Us</a>
