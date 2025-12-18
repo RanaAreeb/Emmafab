@@ -137,4 +137,58 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  /* Performance-optimized animations */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes pulse-slow-delay {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.15);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(200%);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .animate-pulse-slow-delay {
+    animation: pulse-slow-delay 10s ease-in-out infinite;
+    animation-delay: 2s;
+    will-change: opacity, transform;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 8s linear infinite;
+    will-change: transform;
+  }
+
+  /* GPU acceleration for better scroll performance */
+  .will-change-transform {
+    will-change: transform;
+    transform: translateZ(0);
+  }
 }

@@ -1,38 +1,142 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Leaf } from "lucide-react"
+import { ArrowRight, Sparkles, Leaf, Star } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export function HeroSection() {
+  // Reduced particles for better performance
+  const particles = Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    delay: Math.random() * 5,
+    duration: 4 + Math.random() * 3,
+  }))
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-secondary/10"></div>
+      {/* Beautiful layered gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-secondary/10">
+        {/* Base gradient layer */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-secondary/10"></div>
+        
+        {/* Simplified animated radial gradients - using CSS animations for better performance */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(5,150,105,0.12),transparent_60%)] animate-pulse-slow"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(16,185,129,0.12),transparent_60%)] animate-pulse-slow-delay"></div>
+        
+        {/* Mesh gradient overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,150,105,0.03)_0%,transparent_25%,transparent_75%,rgba(16,185,129,0.03)_100%)]"></div>
+        
+        {/* Animated grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(5,150,105,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(5,150,105,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+          }}
+        />
+        
+        {/* Shimmer effect - using CSS animation for better performance */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/3 to-transparent animate-shimmer"></div>
+      </div>
 
-      <div className="absolute top-20 left-4 md:left-10 w-16 h-16 md:w-32 md:h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-4 md:right-10 w-24 h-24 md:w-48 md:h-48 bg-secondary/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/4 w-12 h-12 md:w-24 md:h-24 bg-accent/20 rounded-full blur-2xl animate-bounce"></div>
+      {/* Optimized floating particles - reduced count and simplified animations */}
+      {particles.map((particle) => (
+        <motion.div
+          key={particle.id}
+          className="absolute rounded-full will-change-transform"
+          style={{
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            width: '3px',
+            height: '3px',
+            transform: 'translateZ(0)', // GPU acceleration
+          }}
+          animate={{
+            y: [0, -30, 0],
+            x: [0, Math.sin(particle.id) * 20, 0],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            delay: particle.delay,
+            ease: "easeInOut",
+          }}
+        >
+          <div className="w-full h-full bg-primary/30 rounded-full"></div>
+        </motion.div>
+      ))}
+      
+      {/* Removed large floating orbs for better performance */}
+
+      {/* Simplified animated orbs - reduced blur for performance */}
+      <div className="absolute top-20 left-4 md:left-10 w-16 h-16 md:w-32 md:h-32 bg-primary/15 rounded-full blur-2xl animate-pulse-slow will-change-transform"></div>
+      <div className="absolute bottom-20 right-4 md:right-10 w-24 h-24 md:w-48 md:h-48 bg-secondary/20 rounded-full blur-2xl animate-pulse-slow-delay will-change-transform"></div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-16 md:pt-20">
-          <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Sparkles className="w-4 h-4" />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center lg:text-left"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 via-primary/15 to-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 border border-primary/20 backdrop-blur-sm shadow-lg"
+            >
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <Sparkles className="w-4 h-4" />
+              </motion.div>
               Premium Natural Cosmetics
-            </div>
+            </motion.div>
 
             <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light text-balance leading-tight mb-4 md:mb-6">
-              <span className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Embrace Your</span>
-              <span className="block text-primary font-medium relative text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-8xl">
-                Natural Beauty
-                <svg className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-2 md:h-3 text-primary/30" viewBox="0 0 300 12" fill="none">
+              <motion.span
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl block"
+              >
+                Embrace Your
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+                className="block text-primary font-medium relative text-3xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-8xl mt-2"
+              >
+                <span className="relative z-10 bg-gradient-to-r from-primary via-primary/90 to-primary bg-clip-text text-transparent">
+                  Natural Beauty
+                </span>
+                <motion.svg
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ delay: 0.8, duration: 1.2, ease: "easeInOut" }}
+                  className="absolute -bottom-1 md:-bottom-2 left-0 w-full h-2 md:h-3 text-primary/30"
+                  viewBox="0 0 300 12"
+                  fill="none"
+                >
                   <path
                     d="M5 6C50 2 100 10 150 6C200 2 250 10 295 6"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                   />
-                </svg>
-              </span>
+                </motion.svg>
+              </motion.span>
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-6 md:mb-8 text-pretty leading-relaxed">
@@ -63,49 +167,103 @@ export function HeroSection() {
               </Button>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Leaf className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                100% Natural
-              </div>
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                Premium Quality
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 sm:w-4 sm:h-4 bg-primary rounded-full"></div>
-                Trusted Brand
-              </div>
-            </div>
-          </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs sm:text-sm"
+            >
+              {[
+                { icon: Leaf, text: "100% Natural", color: "text-green-500" },
+                { icon: Sparkles, text: "Premium Quality", color: "text-primary" },
+                { icon: Star, text: "Trusted Brand", color: "text-yellow-500" },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + index * 0.1, duration: 0.4 }}
+                  whileHover={{ scale: 1.1 }}
+                  className="flex items-center gap-2 px-3 py-1.5 bg-background/50 backdrop-blur-sm rounded-full border border-border/50 hover:border-primary/50 transition-all"
+                >
+                  <item.icon className={`w-3 h-3 sm:w-4 sm:h-4 ${item.color}`} />
+                  <span className="text-muted-foreground font-medium">{item.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
 
-          <div className="relative mt-8 lg:mt-0">
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
-              <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border border-primary/20">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="relative mt-8 lg:mt-0"
+          >
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto" style={{ perspective: "1000px" }}>
+              <motion.div
+                whileHover={{ rotateY: 5, rotateX: 5, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border border-primary/20 shadow-2xl"
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <Image
                   src="/images/logo.webp"
                   alt="EmmaFab.shop"
                   width={300}
                   height={200}
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain relative z-10"
                 />
-              </div>
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-primary/10 rounded-2xl sm:rounded-3xl blur-xl -z-10"></div>
+              </motion.div>
 
-              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-card border border-border rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg animate-float">
-                <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-primary/20 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto">
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-card border border-border rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg backdrop-blur-sm"
+              >
+                <motion.div
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto"
+                >
                   <Leaf className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-primary" />
-                </div>
+                </motion.div>
                 <p className="text-xs font-medium mt-1 sm:mt-2 text-center">Natural</p>
-              </div>
+              </motion.div>
 
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-card border border-border rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg animate-float delay-500">
-                <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-secondary/20 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto">
+              <motion.div
+                animate={{
+                  y: [0, 10, 0],
+                  rotate: [0, -5, 0],
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  delay: 0.5,
+                  ease: "easeInOut",
+                }}
+                className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-card border border-border rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg backdrop-blur-sm"
+              >
+                <motion.div
+                  animate={{ rotate: [360, 0] }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                  className="w-8 h-8 sm:w-12 sm:h-12 lg:w-16 lg:h-16 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-lg sm:rounded-xl flex items-center justify-center mx-auto"
+                >
                   <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-secondary" />
-                </div>
+                </motion.div>
                 <p className="text-xs font-medium mt-1 sm:mt-2 text-center">Premium</p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

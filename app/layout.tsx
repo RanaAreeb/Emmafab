@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://emmafab.shop"),
   title: {
     default: "EmmaFab - Natural Beauty Products | Premium Cosmetics",
-    template: "%s | EmmaFab.shop",
+    template: "%s | EmmaFab",
   },
   description:
     "Discover premium natural cosmetics including black soap, shea butter, stretch mark cream, moringa slim tea, and hair care products. 100% natural, cruelty-free beauty products.",
