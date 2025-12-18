@@ -5,8 +5,8 @@ import { Shield, Eye, Lock, Database, Users, Mail } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - EmmaFab Cosmetics",
-  description: "Learn how EmmaFab Cosmetics protects your privacy and handles your personal information.",
+  title: "Privacy Policy - EmmaFab.shop",
+  description: "Learn how EmmaFab.shop protects your privacy and handles your personal information.",
 }
 
 export default function PrivacyPolicyPage() {
@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">Our Commitment to Privacy</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              At EmmaFab Cosmetics, we are committed to protecting your privacy and ensuring the security 
+              At EmmaFab.shop, we are committed to protecting your privacy and ensuring the security 
               of your personal information. This Privacy Policy explains how we collect, use, disclose, 
               and safeguard your information when you visit our website or make a purchase.
             </p>

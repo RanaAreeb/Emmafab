@@ -6,8 +6,8 @@ import { Truck, Clock, Shield, MapPin, Package, CheckCircle } from "lucide-react
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Shipping Information - EmmaFab Cosmetics",
-  description: "Learn about EmmaFab's shipping options, delivery times, and shipping policies.",
+  title: "Shipping Information - EmmaFab.shop",
+  description: "Learn about EmmaFab.shop's shipping options, delivery times, and shipping policies.",
 }
 
 const shippingOptions = [
@@ -69,7 +69,7 @@ export default function ShippingInfoPage() {
               Shipping Information
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Fast, reliable shipping to get your EmmaFab products to you quickly and safely.
+              Fast, reliable shipping to get your EmmaFab.shop products to you quickly and safely.
             </p>
           </div>
         </div>
@@ -331,7 +331,7 @@ export default function ShippingInfoPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-serif font-bold mb-6">Ready to Order?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Experience fast, reliable shipping with EmmaFab Cosmetics.
+              Experience fast, reliable shipping with EmmaFab.shop.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary">

@@ -6,8 +6,26 @@ import { Heart, Leaf, Award, Users } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "About Us - EmmaFab Cosmetics",
-  description: "Learn about EmmaFab Cosmetics' commitment to natural beauty, premium ingredients, and sustainable practices.",
+  title: "About Us - EmmaFab.shop",
+  description:
+    "Learn about EmmaFab.shop's commitment to natural beauty, premium ingredients, and sustainable practices. Discover our mission to provide 100% natural, cruelty-free beauty products.",
+  keywords: [
+    "about EmmaFab",
+    "natural beauty brand",
+    "sustainable cosmetics",
+    "cruelty-free beauty",
+    "organic skincare company",
+  ],
+  openGraph: {
+    type: "website",
+    title: "About Us - EmmaFab.shop",
+    description:
+      "Learn about EmmaFab.shop's commitment to natural beauty, premium ingredients, and sustainable practices.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://emmafab.shop"}/about`,
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://emmafab.shop"}/about`,
+  },
 }
 
 export default function AboutPage() {
@@ -18,7 +36,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center pt-20">
             <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-6">
-              About EmmaFab Cosmetics
+              About EmmaFab.shop
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               We are passionate about creating premium natural beauty products that enhance your skin's 
@@ -36,7 +54,7 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Our Mission</h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  At EmmaFab Cosmetics, we believe that beauty should be natural, sustainable, and accessible. 
+                  At EmmaFab.shop, we believe that beauty should be natural, sustainable, and accessible. 
                   Our mission is to provide premium natural beauty products that not only enhance your skin's 
                   natural radiance but also respect the environment and your health.
                 </p>
@@ -48,7 +66,7 @@ export default function AboutPage() {
               <div className="relative">
                 <Image
                   src="/images/logo.webp"
-                  alt="EmmaFab Cosmetics Logo"
+                  alt="EmmaFab.shop Logo"
                   width={500}
                   height={400}
                   className="rounded-lg shadow-lg"
@@ -124,7 +142,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">Our Story</h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="mb-6">
-                EmmaFab Cosmetics was born from a passion for natural beauty and a desire to create products 
+                EmmaFab.shop was born from a passion for natural beauty and a desire to create products 
                 that truly work. Our founder, Emma, discovered the power of natural ingredients while traveling 
                 through West Africa, where she learned traditional beauty secrets passed down through generations.
               </p>
@@ -135,7 +153,7 @@ export default function AboutPage() {
                 both effective and safe.
               </p>
               <p>
-                Today, EmmaFab Cosmetics continues to honor these traditions while innovating for the future, 
+                Today, EmmaFab.shop continues to honor these traditions while innovating for the future, 
                 ensuring that every product we create meets the highest standards of quality, safety, and effectiveness.
               </p>
             </div>

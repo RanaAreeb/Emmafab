@@ -7,8 +7,8 @@ import { Leaf, Droplets, Sparkles, Shield } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Ingredients - EmmaFab Cosmetics",
-  description: "Discover the natural ingredients that make EmmaFab products so effective. Learn about their benefits and sourcing.",
+  title: "Ingredients - EmmaFab.shop",
+  description: "Discover the natural ingredients that make EmmaFab.shop products so effective. Learn about their benefits and sourcing.",
 }
 
 const ingredients = [
@@ -73,7 +73,7 @@ export default function IngredientsPage() {
               Our Ingredients
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Discover the powerful natural ingredients that make EmmaFab products so effective. 
+              Discover the powerful natural ingredients that make EmmaFab.shop products so effective. 
               Each ingredient is carefully selected for its proven benefits and ethical sourcing.
             </p>
           </div>
@@ -86,7 +86,7 @@ export default function IngredientsPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">Nature's Best Ingredients</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              At EmmaFab, we believe in the power of nature. Our products are formulated with 
+              At EmmaFab.shop, we believe in the power of nature. Our products are formulated with 
               the finest natural ingredients, each chosen for its unique properties and proven benefits. 
               We source our ingredients responsibly, ensuring they meet our high standards for quality, 
               purity, and ethical sourcing.

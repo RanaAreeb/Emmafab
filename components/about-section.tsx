@@ -33,7 +33,7 @@ export function AboutSection() {
             Dedicated to natural beauty
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            EmmaFab Cosmetics is committed to creating premium natural beauty products that enhance your skin's natural
+            EmmaFab.shop is committed to creating premium natural beauty products that enhance your skin's natural
             radiance. Our carefully crafted formulations combine traditional wisdom with modern innovation.
           </p>
         </div>

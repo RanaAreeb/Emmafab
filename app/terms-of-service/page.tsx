@@ -5,8 +5,8 @@ import { FileText, Scale, Shield, AlertTriangle, Users, CreditCard } from "lucid
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Terms of Service - EmmaFab Cosmetics",
-  description: "Read EmmaFab Cosmetics' terms of service and user agreement.",
+  title: "Terms of Service - EmmaFab.shop",
+  description: "Read EmmaFab.shop's terms of service and user agreement.",
 }
 
 export default function TermsOfServicePage() {
@@ -35,7 +35,7 @@ export default function TermsOfServicePage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">Agreement to Terms</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              By accessing and using EmmaFab Cosmetics' website and services, you agree to be bound by 
+              By accessing and using EmmaFab.shop's website and services, you agree to be bound by 
               these Terms of Service and all applicable laws and regulations. If you do not agree with 
               any of these terms, you are prohibited from using this site.
             </p>
@@ -257,7 +257,7 @@ export default function TermsOfServicePage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">Limitation of Liability</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              To the maximum extent permitted by law, EmmaFab Cosmetics shall not be liable for any 
+              To the maximum extent permitted by law, EmmaFab.shop shall not be liable for any 
               indirect, incidental, special, consequential, or punitive damages, including but not limited 
               to loss of profits, data, use, goodwill, or other intangible losses.
             </p>

@@ -83,9 +83,7 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-medium mb-1">Address</h4>
                     <p className="text-muted-foreground">
-                      123 Beauty Lane
-                      <br />
-                      Natural City, NC 12345
+                            Minnesota, USA
                     </p>
                   </div>
                 </div>
@@ -96,7 +94,7 @@ export function ContactSection() {
               <CardContent className="p-8">
                 <h4 className="font-serif text-xl font-medium mb-4">Ready to experience natural beauty?</h4>
                 <p className="mb-6 opacity-90">
-                  Join thousands of satisfied customers who have transformed their skincare routine with EmmaFab.
+                  Join thousands of satisfied customers who have transformed their skincare routine with EmmaFab.shop.
                 </p>
                 <Button variant="secondary" className="w-full" asChild>
                   <Link href="/products">

@@ -36,7 +36,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-6 md:mb-8 text-pretty leading-relaxed">
-              Transform your skincare routine with EmmaFab's premium collection of natural cosmetics, crafted with the
+              Transform your skincare routine with EmmaFab.shop's premium collection of natural cosmetics, crafted with the
               finest ingredients for radiant, healthy skin.
             </p>
 
@@ -84,7 +84,7 @@ export function HeroSection() {
               <div className="relative bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border border-primary/20">
                 <Image
                   src="/images/logo.webp"
-                  alt="EmmaFab Cosmetics"
+                  alt="EmmaFab.shop"
                   width={300}
                   height={200}
                   className="w-full h-auto object-contain"

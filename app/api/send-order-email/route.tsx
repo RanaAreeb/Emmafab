@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com"
     const smtpPort = Number(process.env.SMTP_PORT || 465)
     const smtpSecure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : true
-    const mailFrom = process.env.MAIL_FROM || smtpUser || "no-reply@emmafab.com"
+    const mailFrom = process.env.MAIL_FROM || smtpUser || "EmmaFab.shop <emmafabcosmetics@gmail.com>"
 
     if (smtpUser && smtpPass) {
       const transporter = nodemailer.createTransport({
@@ -160,7 +160,7 @@ function generateOrderEmailHTML(orderData: OrderData): string {
       
       <!-- Header -->
       <div style="text-align: center; margin-bottom: 40px; padding: 20px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border-radius: 12px;">
-        <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">EmmaFab Cosmetics</h1>
+        <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 300;">EmmaFab.shop</h1>
         <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 16px;">Natural Beauty Products</p>
       </div>
       
@@ -253,7 +253,7 @@ function generateOrderEmailHTML(orderData: OrderData): string {
       <!-- Footer -->
       <div style="text-align: center; margin-top: 40px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
         <p style="margin: 0; color: #9ca3af; font-size: 14px;">
-          © ${new Date().getFullYear()} EmmaFab Cosmetics. All rights reserved.
+          © ${new Date().getFullYear()} EmmaFab.shop. All rights reserved.
         </p>
         <p style="margin: 8px 0 0 0; color: #9ca3af; font-size: 14px;">
           Natural Beauty Products for Your Skin Care Needs

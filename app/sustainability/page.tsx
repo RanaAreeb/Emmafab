@@ -7,8 +7,8 @@ import { Leaf, Recycle, Heart, Globe, Users, Award } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Sustainability - EmmaFab Cosmetics",
-  description: "Learn about EmmaFab's commitment to sustainability, ethical sourcing, and environmental responsibility.",
+  title: "Sustainability - EmmaFab.shop",
+  description: "Learn about EmmaFab.shop's commitment to sustainability, ethical sourcing, and environmental responsibility.",
 }
 
 const sustainabilityInitiatives = [
@@ -69,7 +69,7 @@ export default function SustainabilityPage() {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-serif font-bold text-foreground mb-8">Our Sustainability Mission</h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              At EmmaFab, we believe that beauty should never come at the cost of our planet or its people. 
+              At EmmaFab.shop, we believe that beauty should never come at the cost of our planet or its people. 
               Our commitment to sustainability is woven into every aspect of our business, from the way we source 
               ingredients to how we package and ship our products.
             </p>

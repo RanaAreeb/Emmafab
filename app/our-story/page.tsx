@@ -6,8 +6,8 @@ import { Calendar, MapPin, Heart, Star } from "lucide-react"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Our Story - EmmaFab Cosmetics",
-  description: "Discover the journey of EmmaFab Cosmetics from traditional African beauty secrets to modern natural cosmetics.",
+  title: "Our Story - EmmaFab.shop",
+  description: "Discover the journey of EmmaFab.shop from traditional African beauty secrets to modern natural cosmetics.",
 }
 
 export default function OurStoryPage() {
@@ -22,7 +22,7 @@ export default function OurStoryPage() {
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
               From traditional African beauty secrets to modern natural cosmetics - 
-              discover the journey that created EmmaFab Cosmetics.
+              discover the journey that created EmmaFab.shop.
             </p>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function OurStoryPage() {
                   </div>
                   <h3 className="text-2xl font-serif font-bold text-foreground mb-4">EmmaFab is Born</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    EmmaFab Cosmetics was officially launched with a mission to bring traditional African 
+                    EmmaFab.shop was officially launched with a mission to bring traditional African 
                     beauty secrets to the modern world. The brand quickly gained recognition for its 
                     authentic ingredients and effective formulations.
                   </p>
@@ -144,7 +144,7 @@ export default function OurStoryPage() {
                   </div>
                   <h3 className="text-2xl font-serif font-bold text-foreground mb-4">Growth & Innovation</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Today, EmmaFab Cosmetics continues to grow, expanding our product line while staying 
+                    Today, EmmaFab.shop continues to grow, expanding our product line while staying 
                     true to our roots. We've helped thousands of customers discover the power of natural 
                     beauty and continue to innovate with new products that honor traditional wisdom.
                   </p>

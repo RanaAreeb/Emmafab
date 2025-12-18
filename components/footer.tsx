@@ -11,13 +11,13 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Image
               src="/images/logo.webp"
-              alt="EmmaFab Cosmetics"
+              alt="EmmaFab.shop"
               width={150}
               height={75}
               className="h-16 w-auto mb-6"
             />
             <p className="text-background/80 mb-6 max-w-md leading-relaxed">
-              EmmaFab Cosmetics is dedicated to creating premium natural beauty products that enhance your skin's
+              EmmaFab.shop is dedicated to creating premium natural beauty products that enhance your skin's
               natural radiance with carefully crafted formulations.
             </p>
             <div className="flex space-x-4">
@@ -126,7 +126,7 @@ export function Footer() {
 
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-background/60 text-sm mb-4 md:mb-0">© 2025 EmmaFab Cosmetics. All rights reserved.</p>
+            <p className="text-background/60 text-sm mb-4 md:mb-0">© 2025 EmmaFab.shop. All rights reserved.</p>
             <div className="flex space-x-6 text-sm">
               <Link href="/privacy-policy" className="text-background/60 hover:text-background transition-colors">
                 Privacy Policy

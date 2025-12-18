@@ -5,15 +5,63 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
+import { getFAQSchema } from "@/lib/structured-data"
 
 export const metadata: Metadata = {
-  title: "Contact Us - EmmaFab Cosmetics",
-  description: "Get in touch with EmmaFab Cosmetics. We're here to help with questions, orders, and support.",
+  title: "Contact Us - EmmaFab.shop",
+  description:
+    "Get in touch with EmmaFab.shop. We're here to help with questions, orders, and support. Contact our customer service team via email or phone.",
+  keywords: [
+    "contact EmmaFab",
+    "customer service",
+    "support",
+    "help",
+    "questions",
+    "order support",
+  ],
+  openGraph: {
+    type: "website",
+    title: "Contact Us - EmmaFab.shop",
+    description: "Get in touch with EmmaFab.shop. We're here to help with questions, orders, and support.",
+    url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://emmafab.shop"}/contact`,
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_SITE_URL || "https://emmafab.shop"}/contact`,
+  },
 }
 
 export default function ContactPage() {
+  const faqs = [
+    {
+      question: "How long does shipping take?",
+      answer:
+        "We offer free shipping on orders over $50. Standard shipping takes 3-5 business days, while express shipping takes 1-2 business days.",
+    },
+    {
+      question: "Are your products cruelty-free?",
+      answer:
+        "Yes! All EmmaFab.shop products are cruelty-free and never tested on animals. We're proud to be certified by Leaping Bunny.",
+    },
+    {
+      question: "What's your return policy?",
+      answer:
+        "We offer a 30-day return policy for unused products. If you're not satisfied with your purchase, contact us and we'll make it right.",
+    },
+    {
+      question: "Do you offer international shipping?",
+      answer:
+        "Currently, we ship within the United States and Canada. We're working on expanding our international shipping options.",
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getFAQSchema(faqs)),
+        }}
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary/5 via-background to-primary/5 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,8 +170,8 @@ export default function ContactPage() {
                           <h3 className="font-semibold text-foreground mb-2">Visit Us</h3>
                           <p className="text-muted-foreground mb-2">Our headquarters</p>
                           <address className="text-primary not-italic">
-                            123 Beauty Lane<br />
-                            Natural City, NC 12345
+                            Minnesota, USA<br />
+                            
                           </address>
                         </div>
                       </div>
@@ -178,7 +226,7 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Yes! All EmmaFab products are cruelty-free and never tested on animals. We're proud to be 
+                    Yes! All EmmaFab.shop products are cruelty-free and never tested on animals. We're proud to be 
                     certified by Leaping Bunny.
                   </p>
                 </CardContent>

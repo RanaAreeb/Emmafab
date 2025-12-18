@@ -1,6 +1,7 @@
 "use client"
 
 import { products } from "@/lib/products"
+import Script from "next/script"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
