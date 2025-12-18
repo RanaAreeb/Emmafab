@@ -153,7 +153,7 @@ export default function ContactPage() {
                           <h3 className="font-semibold text-foreground mb-2">Call Us</h3>
                           <p className="text-muted-foreground mb-2">Monday - Friday, 9AM - 6PM EST</p>
                           <a href="tel:+1234567890" className="text-primary hover:underline">
-                            +1 (234) 567-890
+                            +1 (612) 804-7793
                           </a>
                         </div>
                       </div>
