@@ -25,7 +25,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://emmafab.shop"),
   title: {
-    default: "EmmaFab.shop - Natural Beauty Products | Premium Cosmetics",
+    default: "EmmaFab - Natural Beauty Products | Premium Cosmetics",
     template: "%s | EmmaFab.shop",
   },
   description:
