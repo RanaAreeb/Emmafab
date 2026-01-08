@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       "cruelty-free",
     ],
     openGraph: {
-      type: "product",
+      type: "website",
       title: product.name,
       description: product.longDescription || product.description,
       url: productUrl,
