@@ -2,9 +2,10 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Leaf, Heart, Award, Users, Sparkles } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 import { useInView } from "framer-motion"
 import { useRef } from "react"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const values = [
   {
@@ -43,19 +44,21 @@ const values = [
 
 export function AboutSection() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isMobile = useIsMobile()
+  const shouldReduceMotion = useReducedMotion()
+  const isInView = useInView(ref, { once: true, margin: isMobile ? "-150px" : "-100px" })
 
   return (
     <section id="about" className="py-24 bg-gradient-to-b from-background via-muted/10 to-background relative overflow-hidden">
-      {/* Decorative elements - reduced blur for performance */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-2xl translate-x-1/2 translate-y-1/2"></div>
+      {/* Decorative elements - reduced blur for performance on mobile */}
+      <div className={`absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full ${isMobile ? 'blur-xl' : 'blur-2xl'} -translate-x-1/2 -translate-y-1/2`}></div>
+      <div className={`absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full ${isMobile ? 'blur-xl' : 'blur-2xl'} translate-x-1/2 translate-y-1/2`}></div>
       
       <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: shouldReduceMotion ? 0.2 : 0.6 }}
           className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 border border-primary/20">
@@ -75,11 +78,11 @@ export function AboutSection() {
           {values.map((value, index) => (
             <motion.div
               key={value.title}
-              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30, scale: 0.9 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              transition={{ delay: shouldReduceMotion ? 0 : index * 0.1, duration: shouldReduceMotion ? 0.2 : 0.5 }}
             >
-              <Card className="group text-center border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden will-change-transform">
+              <Card className="group text-center border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden" style={{ willChange: isMobile ? 'auto' : 'transform' }}>
                 {/* Gradient background on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 
@@ -88,10 +91,10 @@ export function AboutSection() {
                 
                 <CardContent className="p-8 relative z-10">
                   <motion.div
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={shouldReduceMotion || isMobile ? {} : { scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className={`w-20 h-20 bg-gradient-to-br ${value.color} rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-border/50 group-hover:border-primary/50 transition-colors will-change-transform`}
-                    style={{ transform: 'translateZ(0)' }}
+                    className={`w-20 h-20 bg-gradient-to-br ${value.color} rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-border/50 group-hover:border-primary/50 transition-colors`}
+                    style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
                   >
                     <value.icon className={`h-10 w-10 ${value.iconColor}`} />
                   </motion.div>

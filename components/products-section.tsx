@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Sparkles, ArrowRight, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 const products = [
   {
@@ -40,11 +41,14 @@ const products = [
 ]
 
 export function ProductsSection() {
+  const isMobile = useIsMobile()
+  const shouldReduceMotion = useReducedMotion()
+  
   return (
     <section id="products" className="py-24 bg-gradient-to-b from-background via-primary/5 to-background relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 left-10 w-80 h-80 bg-secondary/5 rounded-full blur-3xl"></div>
+      {/* Decorative elements - reduced blur on mobile */}
+      <div className={`absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full ${isMobile ? 'blur-2xl' : 'blur-3xl'}`}></div>
+      <div className={`absolute bottom-20 left-10 w-80 h-80 bg-secondary/5 rounded-full ${isMobile ? 'blur-2xl' : 'blur-3xl'}`}></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -71,13 +75,13 @@ export function ProductsSection() {
           {products.map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.4 }}
-              style={{ willChange: 'transform, opacity' }}
+              viewport={{ once: true, margin: isMobile ? "-100px" : "-50px" }}
+              transition={{ delay: shouldReduceMotion ? 0 : index * 0.1, duration: shouldReduceMotion ? 0.2 : 0.4 }}
+              style={{ willChange: isMobile ? 'auto' : 'transform, opacity' }}
             >
-              <Card className="group overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col relative will-change-transform">
+              <Card className="group overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col relative" style={{ willChange: isMobile ? 'auto' : 'transform' }}>
                 {/* Unique corner accent */}
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-secondary/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -87,8 +91,8 @@ export function ProductsSection() {
                     alt={product.name}
                     width={600}
                     height={450}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 will-change-transform"
-                    style={{ transform: 'translateZ(0)' }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
                     quality={95}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
@@ -119,13 +123,13 @@ export function ProductsSection() {
                     {product.benefits.map((benefit, benefitIndex) => (
                       <motion.span
                         key={benefit}
-                        initial={{ opacity: 0 }}
+                        initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 + benefitIndex * 0.05, duration: 0.2 }}
-                        whileHover={{ scale: 1.05 }}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-xs font-medium rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-200 relative overflow-hidden group/benefit will-change-transform"
-                        style={{ transform: 'translateZ(0)' }}
+                        transition={{ delay: shouldReduceMotion ? 0 : index * 0.1 + benefitIndex * 0.05, duration: shouldReduceMotion ? 0.1 : 0.2 }}
+                        whileHover={shouldReduceMotion || isMobile ? {} : { scale: 1.05 }}
+                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-xs font-medium rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-200 relative overflow-hidden group/benefit"
+                        style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
                       >
                         <span className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent translate-x-[-100%] group-hover/benefit:translate-x-[100%] transition-transform duration-500"></span>
                         <CheckCircle2 className="w-3 h-3 relative z-10" />

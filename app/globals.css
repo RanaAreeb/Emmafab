@@ -191,4 +191,31 @@
     will-change: transform;
     transform: translateZ(0);
   }
+
+  /* Optimize scroll performance on mobile */
+  @media (max-width: 768px) {
+    * {
+      /* Reduce repaints during scroll */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Optimize animations on mobile */
+    [data-framer-component] {
+      /* Reduce animation complexity on mobile */
+      transform: translateZ(0);
+    }
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }

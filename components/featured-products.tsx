@@ -8,11 +8,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { getFeaturedProducts } from "@/lib/products"
 import { useCart } from "@/lib/cart-context"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export function FeaturedProducts() {
   const featuredProducts = getFeaturedProducts()
   const { actions } = useCart()
+  const isMobile = useIsMobile()
+  const shouldReduceMotion = useReducedMotion()
 
   const handleAddToCart = (product: any) => {
     actions.addToCart(product, 1)
@@ -20,9 +23,9 @@ export function FeaturedProducts() {
 
   return (
     <section className="py-24 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+      {/* Decorative background elements - reduced blur on mobile */}
+      <div className={`absolute top-0 left-0 w-72 h-72 bg-primary/5 rounded-full ${isMobile ? 'blur-2xl' : 'blur-3xl'} -translate-x-1/2 -translate-y-1/2`}></div>
+      <div className={`absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full ${isMobile ? 'blur-2xl' : 'blur-3xl'} translate-x-1/2 translate-y-1/2`}></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -48,13 +51,13 @@ export function FeaturedProducts() {
           {featuredProducts.map((product, index) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.08, duration: 0.4 }}
-              style={{ willChange: 'transform, opacity' }}
+              viewport={{ once: true, margin: isMobile ? "-100px" : "-50px" }}
+              transition={{ delay: shouldReduceMotion ? 0 : index * 0.08, duration: shouldReduceMotion ? 0.2 : 0.4 }}
+              style={{ willChange: isMobile ? 'auto' : 'transform, opacity' }}
             >
-              <Card className="group overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative will-change-transform">
+              <Card className="group overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative" style={{ willChange: isMobile ? 'auto' : 'transform' }}>
                 {/* Unique shimmer effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 -z-0"></div>
                 
@@ -64,8 +67,8 @@ export function FeaturedProducts() {
                     alt={product.name}
                     width={600}
                     height={450}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 will-change-transform"
-                    style={{ transform: 'translateZ(0)' }}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
                     quality={95}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
@@ -134,7 +137,7 @@ export function FeaturedProducts() {
                         View Details
                       </Link>
                     </Button>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <motion.div whileHover={shouldReduceMotion || isMobile ? {} : { scale: 1.05 }} whileTap={shouldReduceMotion || isMobile ? {} : { scale: 0.95 }}>
                       <Button
                         size="lg"
                         className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 px-4"
