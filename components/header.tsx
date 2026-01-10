@@ -39,7 +39,7 @@ export function Header() {
       <header className={`hidden md:block fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl mx-auto px-4 transition-all duration-300 ease-in-out ${
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}>
-        <div className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/30 dark:border-gray-700/30">
+        <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/30 dark:border-gray-700/30">
           <div className="flex items-center justify-center h-16">
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
@@ -77,8 +77,8 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Static Header */}
-      <header className="md:hidden sticky top-0 z-50 bg-gradient-to-r from-background via-background/95 to-background backdrop-blur-md supports-[backdrop-filter]:bg-background/80 border-b border-border/50 shadow-sm">
+      {/* Mobile Static Header - No backdrop blur for performance */}
+      <header className="md:hidden sticky top-0 z-50 bg-background border-b border-border/50 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Mobile Menu Button */}
@@ -100,7 +100,7 @@ export function Header() {
         
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border/50 bg-background/95 backdrop-blur-sm">
+          <div className="md:hidden py-4 border-t border-border/50 bg-background">
             <nav className="flex flex-col space-y-4">
               <Link
                 href="/"

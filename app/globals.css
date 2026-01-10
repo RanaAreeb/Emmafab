@@ -193,17 +193,46 @@
   }
 
   /* Optimize scroll performance on mobile */
-  @media (max-width: 768px) {
-    * {
-      /* Reduce repaints during scroll */
+  @media (max-width: 1024px) {
+    /* Reduce repaints during scroll */
+    html, body {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      -webkit-overflow-scrolling: touch;
+      overflow-scrolling: touch;
     }
     
-    /* Optimize animations on mobile */
-    [data-framer-component] {
-      /* Reduce animation complexity on mobile */
+    /* Disable backdrop blur on mobile for performance - very expensive */
+    [class*="backdrop-blur"] {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+    
+    /* Optimize scroll performance */
+    body {
       transform: translateZ(0);
+      will-change: scroll-position;
+    }
+    
+    /* Disable expensive hover transforms on mobile during scroll */
+    @media (hover: none) {
+      *:hover {
+        transform: none !important;
+      }
+    }
+  }
+  
+  /* Additional optimizations for mid-tier mobile devices */
+  @media (max-width: 768px) {
+    /* Prevent layout shifts during scroll */
+    main, section {
+      contain: layout style paint;
+    }
+    
+    /* Optimize images during scroll */
+    img {
+      content-visibility: auto;
+      contain-intrinsic-size: 300px;
     }
   }
 
@@ -217,5 +246,70 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  /* Parallax element utilities - apply to elements intended for parallax effects */
+  .parallax-element {
+    will-change: transform;
+    transform: translateZ(0); /* GPU acceleration */
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* For images used in parallax, ensure they're optimized */
+  .parallax-image {
+    will-change: transform;
+    transform: translateZ(0);
+    object-fit: cover;
+  }
+
+  /* Preloader animations */
+  @keyframes loadingProgress {
+    0% {
+      width: 0%;
+      transform: translateX(0);
+    }
+    50% {
+      width: 70%;
+      transform: translateX(0);
+    }
+    100% {
+      width: 100%;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeInScale 1s ease-out;
+  }
+
+  .animate-fade-in-delay {
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.5s both;
   }
 }

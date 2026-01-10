@@ -46,7 +46,7 @@ export function AboutSection() {
   const ref = useRef(null)
   const isMobile = useIsMobile()
   const shouldReduceMotion = useReducedMotion()
-  const isInView = useInView(ref, { once: true, margin: isMobile ? "-150px" : "-100px" })
+  const isInView = useInView(ref, { once: true, margin: isMobile ? "-250px" : "-100px" })
 
   return (
     <section id="about" className="py-24 bg-gradient-to-b from-background via-muted/10 to-background relative overflow-hidden">
@@ -82,12 +82,15 @@ export function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ delay: shouldReduceMotion ? 0 : index * 0.1, duration: shouldReduceMotion ? 0.2 : 0.5 }}
             >
-              <Card className="group text-center border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full relative overflow-hidden" style={{ willChange: isMobile ? 'auto' : 'transform' }}>
-                {/* Gradient background on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                
-                {/* Animated border glow */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${value.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}></div>
+              <Card className={`group text-center border border-border/50 ${isMobile ? 'bg-card shadow-lg' : 'bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl'} transition-all duration-300 ${isMobile ? '' : 'hover:-translate-y-1'} h-full relative overflow-hidden`} style={{ willChange: 'auto' }}>
+                {/* Gradient background on hover - disabled on mobile */}
+                {!isMobile && (
+                  <>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    {/* Animated border glow */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${value.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}></div>
+                  </>
+                )}
                 
                 <CardContent className="p-8 relative z-10">
                   <motion.div

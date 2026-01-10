@@ -6,20 +6,34 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { useState, useEffect } from "react"
+
+interface Particle {
+  id: number
+  x: number
+  y: number
+  delay: number
+  duration: number
+}
 
 export function HeroSection() {
   const isMobile = useIsMobile()
   const shouldReduceMotion = useReducedMotion()
+  const [particles, setParticles] = useState<Particle[]>([])
   
-  // Further reduced particles on mobile for better performance
-  const particleCount = isMobile ? 3 : 8
-  const particles = Array.from({ length: particleCount }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: 4 + Math.random() * 3,
-  }))
+  // Generate particles only on client side to avoid hydration mismatch
+  useEffect(() => {
+    // Further reduced particles on mobile for better performance
+    const particleCount = isMobile ? 3 : 8
+    const generatedParticles = Array.from({ length: particleCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 4 + Math.random() * 3,
+    }))
+    setParticles(generatedParticles)
+  }, [isMobile])
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -51,8 +65,8 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/3 to-transparent animate-shimmer"></div>
       </div>
 
-      {/* Optimized floating particles - disabled on mobile and reduced motion */}
-      {!shouldReduceMotion && particles.map((particle) => (
+      {/* Optimized floating particles - completely disabled on mobile for performance */}
+      {!shouldReduceMotion && !isMobile && particles.length > 0 && particles.map((particle) => (
         <motion.div
           key={particle.id}
           className="absolute rounded-full"
@@ -62,9 +76,9 @@ export function HeroSection() {
             width: '3px',
             height: '3px',
             transform: 'translateZ(0)', // GPU acceleration
-            willChange: isMobile ? 'auto' : 'transform',
+            willChange: 'transform',
           }}
-          animate={shouldReduceMotion ? {} : {
+          animate={{
             y: [0, -30, 0],
             x: [0, Math.sin(particle.id) * 20, 0],
             opacity: [0.3, 0.6, 0.3],
@@ -102,7 +116,7 @@ export function HeroSection() {
               initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: shouldReduceMotion ? 0 : 0.2, duration: shouldReduceMotion ? 0.2 : 0.5 }}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 via-primary/15 to-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 border border-primary/20 backdrop-blur-sm shadow-lg"
+              className={`inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 via-primary/15 to-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 border border-primary/20 ${isMobile ? 'shadow-lg' : 'backdrop-blur-sm shadow-lg'}`}
             >
               {!shouldReduceMotion && (
                 <motion.div

@@ -52,14 +52,16 @@ export function FeaturedProducts() {
             <motion.div
               key={product.id}
               initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: isMobile ? "-100px" : "-50px" }}
-              transition={{ delay: shouldReduceMotion ? 0 : index * 0.08, duration: shouldReduceMotion ? 0.2 : 0.4 }}
-              style={{ willChange: isMobile ? 'auto' : 'transform, opacity' }}
+              whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: isMobile ? "-200px" : "-50px" }}
+              transition={{ delay: shouldReduceMotion || isMobile ? 0 : index * 0.08, duration: shouldReduceMotion || isMobile ? 0.2 : 0.4 }}
+              style={{ willChange: 'auto' }}
             >
-              <Card className="group overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative" style={{ willChange: isMobile ? 'auto' : 'transform' }}>
-                {/* Unique shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 -z-0"></div>
+              <Card className={`group overflow-hidden border border-border/50 ${isMobile ? 'bg-card shadow-lg' : 'bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl'} transition-all duration-300 ${isMobile ? '' : 'hover:-translate-y-1'} relative`} style={{ willChange: 'auto' }}>
+                {/* Unique shimmer effect - disabled on mobile for performance */}
+                {!isMobile && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 -z-0"></div>
+                )}
                 
                 <div className="aspect-[3/2] overflow-hidden relative bg-gradient-to-br from-primary/5 to-secondary/5">
                   <Image
@@ -67,13 +69,15 @@ export function FeaturedProducts() {
                     alt={product.name}
                     width={600}
                     height={450}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
+                    className={`w-full h-full object-cover ${isMobile ? '' : 'group-hover:scale-105 transition-transform duration-300'}`}
+                    style={{ transform: 'translateZ(0)', willChange: 'auto' }}
                     quality={95}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  {/* Gradient overlay on hover - disabled on mobile */}
+                  {!isMobile && (
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  )}
                   
                   {/* Badges */}
                   <div className="absolute top-4 left-4 flex flex-col gap-2">

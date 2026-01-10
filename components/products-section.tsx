@@ -76,23 +76,27 @@ export function ProductsSection() {
             <motion.div
               key={product.id}
               initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: isMobile ? "-100px" : "-50px" }}
-              transition={{ delay: shouldReduceMotion ? 0 : index * 0.1, duration: shouldReduceMotion ? 0.2 : 0.4 }}
-              style={{ willChange: isMobile ? 'auto' : 'transform, opacity' }}
+              whileInView={isMobile ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: isMobile ? "-200px" : "-50px" }}
+              transition={{ delay: shouldReduceMotion || isMobile ? 0 : index * 0.1, duration: shouldReduceMotion || isMobile ? 0.2 : 0.4 }}
+              style={{ willChange: 'auto' }}
             >
-              <Card className="group overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col relative" style={{ willChange: isMobile ? 'auto' : 'transform' }}>
-                {/* Unique corner accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-secondary/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <Card className={`group overflow-hidden border border-border/50 ${isMobile ? 'bg-card shadow-lg' : 'bg-card/50 backdrop-blur-sm shadow-lg hover:shadow-xl'} transition-all duration-300 ${isMobile ? '' : 'hover:-translate-y-1'} h-full flex flex-col relative`} style={{ willChange: isMobile ? 'auto' : 'transform' }}>
+                {/* Unique corner accent - disabled on mobile for performance */}
+                {!isMobile && (
+                  <>
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-secondary/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </>
+                )}
                 <div className="aspect-[3/2] overflow-hidden relative bg-gradient-to-br from-primary/5 to-secondary/5">
                   <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
                     width={600}
                     height={450}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    style={{ transform: 'translateZ(0)', willChange: isMobile ? 'auto' : 'transform' }}
+                    className={`w-full h-full object-cover ${isMobile ? '' : 'group-hover:scale-105 transition-transform duration-300'}`}
+                    style={{ transform: 'translateZ(0)', willChange: 'auto' }}
                     quality={95}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />

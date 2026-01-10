@@ -7,6 +7,7 @@ import { CartProvider } from "@/lib/cart-context"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
+import { Preloader } from "@/components/preloader"
 import { getOrganizationSchema, getWebSiteSchema } from "@/lib/structured-data"
 import "./globals.css"
 
@@ -140,14 +141,16 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <SmoothScrollProvider>
-          <CartProvider>
-            <Header />
-            <Suspense fallback={null}>{children}</Suspense>
-            <Footer />
-          </CartProvider>
-          <Analytics />
-        </SmoothScrollProvider>
+        <Preloader>
+          <SmoothScrollProvider>
+            <CartProvider>
+              <Header />
+              <Suspense fallback={null}>{children}</Suspense>
+              <Footer />
+            </CartProvider>
+            <Analytics />
+          </SmoothScrollProvider>
+        </Preloader>
       </body>
     </html>
   )
